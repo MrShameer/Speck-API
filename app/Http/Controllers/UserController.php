@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 
 class UserController extends Controller
@@ -29,7 +31,9 @@ class UserController extends Controller
 		}
         $user->createToken('auth_token')->plainTextToken;
 
-        return redirect()->to('/');
+        session()->flash('message', 'Your registration is Successful. Please check your email to verify your account.');
+
+        return redirect()->to('/register');
     }
 
     public function verify($user_id, Request $request) {
@@ -70,4 +74,5 @@ class UserController extends Controller
             'access_token' => $token,
         ]);
     }
+
 }
