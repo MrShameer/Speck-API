@@ -12,12 +12,12 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::post('info',[SimulationController::class, 'info']);
-    // Route::post('/user', function (Request $request) {
-    //     return $request->user();
-    //     return $request->bearerToken();
-    // });
-
+    Route::post('list',[SimulationController::class, 'list']);
+    Route::post('user', function (Request $request) {
+        return response()->json([
+            'message' => "Authenticated",
+        ]);
+        // return $request->user();
+        // return $request->bearerToken();
+    });
 });
-
-
-// Route::get('/userlist',[UserController::class, 'userlist']);

@@ -14,6 +14,13 @@ class SimulationController extends Controller
         $info = $info->makeHidden(['id','owner']);
         return Response::json($info, 200);
     }
+
+    public function list(Request $request){
+        $list = Simulation::where('owner', $request->user()->id)->get('name');
+        return response()->json([
+            'sims' => $list
+        ], 200);
+    }
 }
 
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -49,10 +50,16 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Invalid Email or Password',
+            ], 401);
+        }
         
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
@@ -71,7 +78,7 @@ class UserController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'access_token' => $token,
+            'token' => $token,
         ]);
     }
 
