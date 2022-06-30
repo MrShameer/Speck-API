@@ -13,13 +13,8 @@ class Simulation extends Model
         'owner',
         'name',
         'total_npc',
-        'total_infected',
         'duration',
         'with_mask',
-    ];
-
-    protected $casts = [
-        'created_at' => 'date',
-        'updated_at' => 'date',
+        'npc_spawn_interval',
     ];
 }

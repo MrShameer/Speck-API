@@ -13,6 +13,7 @@ Route::post('/login', [UserController::class, 'login']);
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::post('info',[SimulationController::class, 'info']);
     Route::post('list',[SimulationController::class, 'list']);
+    Route::post('insertInfo',[SimulationController::class, 'insertInfo']);
     Route::post('user', function (Request $request) {
         return response()->json([
             'message' => "Authenticated",

@@ -18,11 +18,11 @@ class SimulationSeeder extends Seeder
             'owner' => '1',
             'name' => 'Train 1', 
             'total_npc' => '100',
-            'total_infected' => '30',
             'duration' => '1.5',
             'with_mask' => '20',
-            'created' => now(),
-            'updated' => now()
+            'npc_spawn_interval' => '1',
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
     }
 }

@@ -21,6 +21,28 @@ class SimulationController extends Controller
             'sims' => $list
         ], 200);
     }
+
+    public function insertInfo(Request $request){
+        $simulation = Simulation::create([
+            'owner' => $request->user()->id,
+            'name' => $request['name'],
+            'total_npc' => $request['total_npc'],
+            'duration' => $request['duration'],
+            'with_mask' => $request['with_mask'],
+            'npc_spawn_interval' => $request['npc_spawn_interval'],
+        ]);
+
+        if($simulation){
+            return response()->json([
+                'message' => 'Simulation info stored successfully',
+                'insert' => true,
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'Simulation info failed to store',
+            'insert' => false,
+        ], 400);
+    }
 }
 
 
