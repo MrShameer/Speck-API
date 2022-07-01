@@ -17,4 +17,11 @@ class Simulation extends Model
         'with_mask',
         'npc_spawn_interval',
     ];
+
+    // protected $dateFormat = 'U';
+    // protected $dates = ['created_at', 'updated_at'];
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
 }

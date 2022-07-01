@@ -18,7 +18,7 @@ class SimulationSeeder extends Seeder
             'owner' => '1',
             'name' => 'Train 1', 
             'total_npc' => '100',
-            'duration' => '1.5',
+            'duration' => '1:1:1',
             'with_mask' => '20',
             'npc_spawn_interval' => '1',
             'created_at' => now(),

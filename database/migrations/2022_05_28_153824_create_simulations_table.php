@@ -18,7 +18,8 @@ class CreateSimulationsTable extends Migration
             $table->foreignId('owner')->constrained('users')->onDelete('cascade');
             $table->string('name');
             $table->integer('total_npc');
-            $table->double('duration');
+            // $table->double('duration');
+            $table->time('duration');
             $table->integer('with_mask');
             $table->integer('npc_spawn_interval');
             $table->date('created_at');
