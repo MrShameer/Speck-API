@@ -34,9 +34,13 @@
         <div id="title" style="text-align: center;">
             <h1 class="text-center">Speck</h1>
             <h2>Simulasi AI untuk Mensimulasikan Penyebaran Partikel</h2>
+            @if(@isset($message))
+                <h3>{{$message}}</h3>
+            @else
             <a href="{{ route('register') }}">
                 <button type="button" class="btn btn-default">Daftar disini</button>
             </a>
+            @endif
         </div>
 
 

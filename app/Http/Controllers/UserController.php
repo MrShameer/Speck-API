@@ -45,7 +45,8 @@ class UserController extends Controller
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
         }
-        return redirect()->to('/');
+        $message = 'Your email has been verified.';
+        return view('welcome',compact('message'));
     }
 
     public function login(Request $request)
