@@ -31,11 +31,11 @@
             </li>
         </ul>
 
-        <div id="title">
+        <div id="title" style="text-align: center;">
             <h1 class="text-center">Speck</h1>
-            <h2>An AI Simulation to simulate particle spread</h2>
+            <h2>Simulasi AI untuk Mensimulasikan Penyebaran Partikel</h2>
             <a href="{{ route('register') }}">
-                <button type="button" class="btn btn-default">Register Here</button>
+                <button type="button" class="btn btn-default">Daftar disini</button>
             </a>
         </div>
 
