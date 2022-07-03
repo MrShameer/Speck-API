@@ -34,12 +34,12 @@ class SimulationController extends Controller
 
         if($simulation){
             return response()->json([
-                'message' => 'Simulation info stored successfully',
+                'message' => 'Maklumat Simulasi Berjaya Disimpan',
                 'insert' => true,
             ], 200);
         }
         return response()->json([
-            'message' => 'Simulation info failed to store',
+            'message' => 'Maklumat Simulasi Gagal Disimpan',
             'insert' => false,
         ], 400);
     }
@@ -49,12 +49,12 @@ class SimulationController extends Controller
         if($simulation){
             $simulation->delete();
             return response()->json([
-                'message' => 'Simulation info deleted successfully',
+                'message' => 'Maklumat Simulasi Berjaya Dipadamkan',
                 'delete' => true,
             ], 200);
         }
         return response()->json([
-            'message' => 'Simulation info failed to delete',
+            'message' => 'Maklumat Simulasi Gagal Dipadamkan',
             'delete' => false,
         ], 400);
     }

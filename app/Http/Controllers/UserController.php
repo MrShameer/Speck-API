@@ -45,7 +45,7 @@ class UserController extends Controller
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
         }
-        $message = 'Your email has been verified.';
+        $message = 'E-MEL anda telah Disahkan';
         return view('welcome',compact('message'));
     }
 
@@ -58,13 +58,13 @@ class UserController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'message' => 'Invalid Email or Password',
+                'message' => 'E-MEL atau Kata Laluan Tidak Sah',
             ], 401);
         }
         
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
-                'message' => 'Invalid login details'
+                'message' => 'Butiran Log Masuk Tidak Sah'
             ], 401);
         }
 
@@ -72,7 +72,7 @@ class UserController extends Controller
 
         if (!$user->hasVerifiedEmail()) {
             return response()->json([
-                'message' => 'Please verify your email'
+                'message' => 'Sila Sahkan E-MEL Anda'
             ], 401);
         }
 
