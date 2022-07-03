@@ -18,7 +18,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
         return response()->json([
             'message' => "Authenticated",
         ]);
-        // return $request->user();
-        // return $request->bearerToken();
     });
+    Route::post('delete',[SimulationController::class, 'deleteInfo']);
 });

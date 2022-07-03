@@ -10,13 +10,13 @@ use App\Models\Simulation;
 class SimulationController extends Controller
 {
     public function info(Request $request){
-        $info = Simulation::where([['owner', $request->user()->id],['name',$request['name']]])->first();
-        $info = $info->makeHidden(['id','owner']);
+        $info = Simulation::where([['owner', $request->user()->id],['id',$request['id']]])->first();
+        $info = $info->makeHidden('owner');
         return Response::json($info, 200);
     }
 
     public function list(Request $request){
-        $list = Simulation::where('owner', $request->user()->id)->get('name');
+        $list = Simulation::where('owner', $request->user()->id)->get(['id','name']);
         return response()->json([
             'sims' => $list
         ], 200);
@@ -43,6 +43,22 @@ class SimulationController extends Controller
             'insert' => false,
         ], 400);
     }
+
+    public function deleteInfo(Request $request){
+        $simulation = Simulation::where([['owner', $request->user()->id],['id',$request['id']]])->first();
+        if($simulation){
+            $simulation->delete();
+            return response()->json([
+                'message' => 'Simulation info deleted successfully',
+                'delete' => true,
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'Simulation info failed to delete',
+            'delete' => false,
+        ], 400);
+    }
+
 }
 
 
